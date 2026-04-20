@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs sed *)",
+      "Bash(sed -i 's/#046D51/#7fa17c/gI' \"src/components/FloresNombre copy.astro\")",
+      "Bash(sed -i 's/#046D51/#7fa17c/gI' \"src/components/GaleriaFotos copy.astro\")"
+    ]
+  }
+}

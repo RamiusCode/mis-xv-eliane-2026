@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+
+/* Para el nombre */
+.font-great-vibes {
+  font-family: 'Great Vibes', cursive !important;
+}
+
+/* Para mis XV años */
+.font-crimson {
+  font-family: 'Crimson Text', serif !important;
+}
+
+/* Para dedicatoria*/
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+/*Para texto con Charm */
+.font-charm {
+  font-family: 'Charm', cursive !important;
+}
+
+/* Coloriza Separador.webp al color #7fa17c */
+.separador-color {
+  filter: invert(63%) sepia(20%) saturate(420%) hue-rotate(78deg) brightness(72%) contrast(95%);
+}
+
+/* Flotado elegante para mariposa PNG — izquierda */
+@keyframes flotar {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  50%  { transform: translateY(-10px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Flotado elegante para mariposa PNG — derecha (flip incluido) */
+@keyframes flotar-der {
+  0%   { transform: scaleX(-1) translateY(0px) rotate(0deg); }
+  50%  { transform: scaleX(-1) translateY(-10px) rotate(-2deg); }
+  100% { transform: scaleX(-1) translateY(0px) rotate(0deg); }
+}
+
+.mariposa-aletear {
+  animation: flotar 3.5s ease-in-out infinite;
+}
+
+.mariposa-aletear-der {
+  animation: flotar-der 3.5s ease-in-out infinite;
+}

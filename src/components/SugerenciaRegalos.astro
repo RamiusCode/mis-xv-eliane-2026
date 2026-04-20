@@ -1,0 +1,173 @@
+---
+// SugerenciaRegalos.astro
+---
+
+<section class="py-8 md:py-12 px-4 relative overflow-hidden">
+    <!-- FLOR IZQUIERDA -->
+    <div
+        class="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none z-20"
+        id="flores-reg-izq"
+    >
+        <img
+            src="/imagenes/FloresIzquierda.webp"
+            alt="Flores izquierda"
+            class="w-12 sm:w-16 md:w-20 h-auto object-contain"
+        />
+    </div>
+
+    <!-- FLOR DERECHA -->
+    <div
+        class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none z-20"
+        id="flores-reg-der"
+    >
+        <img
+            src="/imagenes/FloresDerecha.webp"
+            alt="Flores derecha"
+            class="w-12 sm:w-16 md:w-20 h-auto object-contain"
+        />
+    </div>
+
+    <div class="max-w-xl mx-auto text-center relative z-10">
+        <!-- SEPARADOR -->
+        <div class="flex justify-center mb-6" id="separador-reg">
+            <img
+                src="/imagenes/Separador.webp"
+                alt="Separador decorativo"
+                class="w-40 md:w-48 lg:w-56 h-auto object-contain separador-csolor"
+            />
+        </div>
+
+        <!-- TÍTULO -->
+        <div class="mb-4" id="titulo-reg">
+            <h2
+                class="font-charm text-2xl md:text-3xl text-[#D4AF37] font-bold tracking-wide"
+            >
+                SUGERENCIA DE REGALOS
+            </h2>
+        </div>
+
+        <!-- MENSAJE -->
+        <div class="mb-8 px-4" id="mensaje-reg">
+            <p
+                class="font-charm text-xl md:text-2xl text-[#7fa17c] leading-relaxed"
+            >
+                Tu presencia es el mejor regalo para mí; pero si deseas tener un
+                detalle, puedes hacerlo mediante código QR.
+            </p>
+        </div>
+
+        <!-- CARD QR -->
+        <div
+            class="bg-white/60 backdrop-blur-sm rounded-3xl border border-[#D4AF37]/30 py-8 px-6 shadow-sm"
+            id="card-reg"
+        >
+            <!-- IMAGEN QR -->
+            <div class="flex justify-center mb-4" id="qr-img">
+                <div
+                    class="w-56 h-56 md:w-64 md:h-64 bg-white rounded-2xl border-2 border-[#D4AF37]/40 flex items-center justify-center shadow-md"
+                >
+                    <img
+                        src="/imagenes/qr.png"
+                        alt="Código QR"
+                        class="w-full h-full object-contain p-3"
+                    />
+                </div>
+            </div>
+
+            <!-- NOMBRE -->
+            <div class="mb-4" id="nombre-reg">
+                <p
+                    class="font-charm text-lg md:text-xl text-[#7fa17c] font-bold"
+                >
+                    Nombre: Claudia Lorena Alba Gil
+                </p>
+            </div>
+
+            <!-- LÍNEA DECORATIVA -->
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div
+                    class="w-12 h-px bg-gradient-to-r from-transparent to-[#D4AF37]"
+                >
+                </div>
+                <div class="w-2 h-2 rounded-full bg-[#D4AF37]"></div>
+                <div
+                    class="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]"
+                >
+                </div>
+            </div>
+
+            <!-- TEXTO SOBRES -->
+            <div id="texto-sobres">
+                <p
+                    class="font-charm text-lg md:text-xl text-[#7fa17c] leading-relaxed"
+                >
+                    En el evento estarán disponibles sobres para quienes deseen
+                    dejar su muestra de cariño.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.set("#flores-reg-izq", { opacity: 0, x: -30 });
+            gsap.set("#flores-reg-der", { opacity: 0, x: 30 });
+            gsap.set("#separador-reg", { opacity: 0, scale: 0.8 });
+            gsap.set("#titulo-reg", { opacity: 0, scale: 0.9 });
+            gsap.set("#mensaje-reg", { opacity: 0, scale: 0.9 });
+            gsap.set("#card-reg", { opacity: 0, scale: 0.9 });
+
+            ScrollTrigger.create({
+                trigger: "#separador-reg",
+                start: "top 85%",
+                end: "top 20%",
+
+                onEnter: () => {
+                    const tl = gsap.timeline();
+
+                    tl.to("#flores-reg-izq, #flores-reg-der", {
+                        opacity: 1,
+                        x: 0,
+                        duration: 1,
+                        ease: "power2.out",
+                    }).to(
+                        "#separador-reg, #titulo-reg, #mensaje-reg, #card-reg",
+                        {
+                            opacity: 1,
+                            scale: 1,
+                            duration: 1,
+                            ease: "back.out(1.2)",
+                        },
+                        "<",
+                    );
+
+                },
+
+                onLeaveBack: () => {
+                    gsap.set("#flores-reg-izq", { opacity: 0, x: -30 });
+                    gsap.set("#flores-reg-der", { opacity: 0, x: 30 });
+                    gsap.set("#separador-reg", { opacity: 0, scale: 0.8 });
+                    gsap.set("#titulo-reg", { opacity: 0, scale: 0.9 });
+                    gsap.set("#mensaje-reg", { opacity: 0, scale: 0.9 });
+                    gsap.set("#card-reg", { opacity: 0, scale: 0.9 });
+                },
+            });
+        });
+    }
+</script>
+
+<style>
+    #card-reg {
+        transition: box-shadow 0.3s ease;
+    }
+    #card-reg:hover {
+        box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+    }
+</style>
